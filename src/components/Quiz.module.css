@@ -1,0 +1,19 @@
+.progress {
+  width: 50%;
+  height: 0.5rem;
+  border-radius: 24px;
+  margin: 0;
+  background: #6a558a;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+.progress::-webkit-progress-bar {
+  background: #6a558a;
+  border-radius: 24px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+.progress::-webkit-progress-value {
+  background: #9e5ef8;
+  border-radius: 24px;
+}
