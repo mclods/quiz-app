@@ -17,6 +17,7 @@ export default [
         text: 'A library used for building mobile applications only.',
       },
     ],
+    correctAnswer: 'a1',
   },
   {
     id: 'q2',
@@ -33,6 +34,7 @@ export default [
         text: 'Part of the Redux library for managing global state.',
       },
     ],
+    correctAnswer: 'a1',
   },
   {
     id: 'q3',
@@ -55,6 +57,7 @@ export default [
         text: 'A tool for making HTTP requests in a React application.',
       },
     ],
+    correctAnswer: 'a1',
   },
   {
     id: 'q4',
@@ -71,6 +74,7 @@ export default [
         text: 'By using the "new" keyword followed by the component name.',
       },
     ],
+    correctAnswer: 'a1',
   },
   {
     id: 'q5',
@@ -90,6 +94,7 @@ export default [
         text: 'A library for managing global state in React applications.',
       },
     ],
+    correctAnswer: 'a1',
   },
   {
     id: 'q6',
@@ -112,6 +117,7 @@ export default [
         text: 'By using the loop() method to iterate over an array of data and returning JSX.',
       },
     ],
+    correctAnswer: 'a1',
   },
   {
     id: 'q7',
@@ -122,5 +128,6 @@ export default [
       { id: 'a3', text: 'Using the && operator.' },
       { id: 'a4', text: 'Using an if-else statement.' },
     ],
+    correctAnswer: 'a1',
   },
 ];
