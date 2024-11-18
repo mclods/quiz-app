@@ -1,12 +1,12 @@
 import Answers from './Answers';
 
-function QuestionAnswers() {
+function QuestionAnswers({ question, onSelectAnswer }) {
   return (
     <section className="flex flex-col gap-y-4 py-4 w-full">
       <p className="font-eduAustralia text-3xl font-bold text-purple-300">
-        Question
+        {question.text}
       </p>
-      <Answers />
+      <Answers options={question.answers} onSelectAnswer={onSelectAnswer} />
     </section>
   );
 }
