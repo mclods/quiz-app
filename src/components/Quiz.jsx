@@ -5,7 +5,7 @@ import QuizResults from './QuizResults';
 import QuestionTimer from './QuestionTimer';
 import getShuffleQuestions from '../utils/shuffleQuestions';
 
-const QUESTION_TIMER_TIMEOUT = 5000;
+const QUESTION_TIMER_TIMEOUT = 10000;
 const SHUFFLED_QUESTIONS = getShuffleQuestions(QUESTIONS);
 
 function Quiz() {
