@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import classes from './QuestionTimer.module.css';
 
 const QUESTION_TIMER_INTERVAL = 10;

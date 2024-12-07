@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        eduAustralia: ['Edu AU VIC WA NT Pre', 'cursive'],
-        sourGummy: ['Sour Gummy', 'sans-serif'],
+        parkinsans: ['Parkinsans', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
     },
   },

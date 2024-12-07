@@ -10,7 +10,7 @@ function Header() {
         className="w-16 h-16 drop-shadow-[0_0_3px_rgb(0,0,0)]"
       />
       <p
-        className={`font-eduAustralia font-semibold text-5xl text-purple-300 tracking-wider lowercase ${classes.titleShadow}`}
+        className={`font-parkinsans font-semibold text-5xl text-purple-300 tracking-wider lowercase ${classes.titleShadow}`}
       >
         Quiz App
       </p>
