@@ -1,27 +1,43 @@
 import QuestionAnswers from './QuestionAnswers';
-import classes from './Quiz.module.css';
 import QUESTIONS from '../utils/questions';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import QuizResults from './QuizResults';
+import QuestionTimer from './QuestionTimer';
+import getShuffleQuestions from '../utils/shuffleQuestions';
+
+const QUESTION_TIMER_TIMEOUT = 10000;
+const SHUFFLED_QUESTIONS = getShuffleQuestions(QUESTIONS);
 
 function Quiz() {
-  const [quizData, setQuizData] = useState(QUESTIONS);
   const [answers, setAnswers] = useState([]);
   let activeQuestion;
 
-  function handleSelectAnswer(answer) {
+  const handleSelectAnswer = useCallback(function handleSelectAnswer(answer) {
     setAnswers((prevAnswers) => [...prevAnswers, answer]);
-  }
+  }, []);
 
-  if (quizData.length === answers.length) {
+  const handleSkipAnswer = useCallback(
+    function () {
+      handleSelectAnswer(null);
+    },
+    [handleSelectAnswer]
+  );
+
+  const activeQuestionIndex = answers.length;
+
+  if (activeQuestionIndex === SHUFFLED_QUESTIONS.length) {
     return <QuizResults />;
   } else {
-    activeQuestion = quizData[answers.length];
+    activeQuestion = SHUFFLED_QUESTIONS[activeQuestionIndex];
   }
 
   return (
     <section className="flex flex-col gap-y-3 mx-[20vw] my-12 px-[10vw] py-10 rounded-md items-center bg-gradient-to-b from-[#3e2a60] to-[#321061] shadow-[1px_1px_8px_4px_rgba(12,5,32,0.6)]">
-      <progress value={80} max={100} className={classes.progress} />
+      <QuestionTimer
+        key={activeQuestionIndex}
+        timeout={QUESTION_TIMER_TIMEOUT}
+        onTimerExpired={handleSkipAnswer}
+      />
       <QuestionAnswers
         question={activeQuestion}
         onSelectAnswer={handleSelectAnswer}
