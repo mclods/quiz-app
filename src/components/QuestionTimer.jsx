@@ -33,6 +33,7 @@ function QuestionTimer({ timeout, onTimerExpired }) {
       value={remainingTime}
       max={timeout}
       className={classes.progress}
+      data-testid="question-timer-progress-bar"
     />
   );
 }

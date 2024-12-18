@@ -1,11 +1,15 @@
 import Answers from './Answers';
-import classes from './QuestionAnswers.module.css';
+import classes from './Questions.module.css';
 
-function QuestionAnswers({ question, onSelectAnswer }) {
+function Questions({ question, onSelectAnswer }) {
   return (
-    <section className="flex flex-col gap-y-4 py-4 w-full">
+    <section
+      className="flex flex-col gap-y-4 py-4 w-full"
+      data-testid="question-container"
+    >
       <p
         className={`font-parkinsans text-2xl text-purple-300 ${classes.questionStyles}`}
+        data-testid="question-text"
       >
         {question.text}
       </p>
@@ -14,4 +18,4 @@ function QuestionAnswers({ question, onSelectAnswer }) {
   );
 }
 
-export default QuestionAnswers;
+export default Questions;
