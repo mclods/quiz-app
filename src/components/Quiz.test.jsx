@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, vi, beforeEach } from 'vitest';
 import Quiz from './Quiz';
 import { act, fireEvent, render } from '@testing-library/react';
 
