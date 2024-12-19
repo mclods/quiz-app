@@ -2,7 +2,7 @@ import { render, fireEvent, act } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import Questions from './Questions';
 
-describe('Questions Component', () => {
+describe('Test Questions Component', () => {
   const mockQuestion = {
     id: 'q1',
     text: 'What is the capital of France?',

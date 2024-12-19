@@ -2,7 +2,7 @@ import { act, render } from '@testing-library/react';
 import { describe, it, vi } from 'vitest';
 import QuestionTimer from './QuestionTimer';
 
-describe('QuestionTimer', () => {
+describe('Test QuestionTimer Component', () => {
   it('renders the progress bar with correct initial value', () => {
     const { getByTestId } = render(
       <QuestionTimer timeout={1000} onTimerExpired={() => {}} />
