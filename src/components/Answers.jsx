@@ -14,6 +14,8 @@ function Answers({ options, onSelectAnswer, answerState }) {
     case 'wrong':
       selectedAnswerStyles = 'bg-red-400 hover:bg-red-500';
       break;
+    default:
+      selectedAnswerStyles = '';
   }
 
   useEffect(() => {
@@ -33,7 +35,9 @@ function Answers({ options, onSelectAnswer, answerState }) {
         {options?.map((answer, index) => (
           <li key={answer.id} data-testid="answer-list-item">
             <button
-              className={`w-full py-2 px-4 rounded-[24px] shadow-lg font-inter text-lg ${selectedAnswer === answer.id ? selectedAnswerStyles : 'bg-blue-400 hover:bg-purple-400 disabled:opacity-50'}`}
+              className={`w-full py-2 px-4 rounded-[24px] shadow-lg font-inter text-lg 
+                ${selectedAnswer === answer.id ? selectedAnswerStyles : 'bg-blue-400 hover:bg-purple-400 disabled:opacity-50'}
+              `}
               onClick={() => handleSelectAnswer(answer)}
               data-testid={`answer-${index}-btn`}
               disabled={!!selectedAnswer}
