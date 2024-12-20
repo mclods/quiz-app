@@ -1,6 +1,11 @@
 import { describe, it, vi, beforeEach } from 'vitest';
 import Quiz from './Quiz';
 import { act, fireEvent, render } from '@testing-library/react';
+import {
+  QUESTION_TIMER_TIMEOUT,
+  LOCK_QUESTION_TIMEOUT,
+  RESULT_TIMEOUT,
+} from './Questions';
 
 vi.mock('../utils/shuffleQuestions', () => ({
   default: () => [
@@ -42,23 +47,28 @@ describe('Test Quiz Component', () => {
   });
 
   it('Moves to next question after selecting answer', () => {
+    vi.useFakeTimers();
+
     const { getByTestId } = render(<Quiz />);
     expect(getByTestId('question-text')).toHaveTextContent('question 1?');
 
     act(() => {
       fireEvent.click(getByTestId('answer-0-btn'));
+      // Advance timers by the lock question timeout and result timeout
+      vi.advanceTimersByTime(LOCK_QUESTION_TIMEOUT + RESULT_TIMEOUT);
     });
     expect(getByTestId('question-text')).toHaveTextContent('question 2?');
+    vi.useRealTimers();
   });
 
-  it('Moves to next question if not answered within 10seconds', () => {
+  it('Moves to next question if not answered within QUESTION_TIMER_TIMEOUT', () => {
     vi.useFakeTimers();
     const { getByTestId } = render(<Quiz />);
     expect(getByTestId('question-text')).toHaveTextContent('question 1?');
 
     // After 10 seconds
     act(() => {
-      vi.advanceTimersByTime(10000);
+      vi.advanceTimersByTime(QUESTION_TIMER_TIMEOUT);
     });
     expect(getByTestId('question-text')).toHaveTextContent('question 2?');
 

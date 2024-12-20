@@ -17,3 +17,15 @@
   background: #9e5ef8;
   border-radius: 24px;
 }
+
+.progress.answered::-webkit-progress-value {
+  background: #facc15;
+}
+
+.progress.correct::-webkit-progress-value {
+  background: #4ade80;
+}
+
+.progress.wrong::-webkit-progress-value {
+  background: #f87171;
+}
