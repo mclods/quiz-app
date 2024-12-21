@@ -6,13 +6,15 @@ function Answers({ options, onSelectAnswer, answerState }) {
 
   switch (answerState) {
     case 'answered':
-      selectedAnswerStyles = 'bg-yellow-400 hover:bg-yellow-500';
+      selectedAnswerStyles =
+        'bg-yellow-400 hover:bg-yellow-500 cursor-not-allowed';
       break;
     case 'correct':
-      selectedAnswerStyles = 'bg-green-400 hover:bg-green-500';
+      selectedAnswerStyles =
+        'bg-green-400 hover:bg-green-500 cursor-not-allowed';
       break;
     case 'wrong':
-      selectedAnswerStyles = 'bg-red-400 hover:bg-red-500';
+      selectedAnswerStyles = 'bg-red-400 hover:bg-red-500 cursor-not-allowed';
       break;
     default:
       selectedAnswerStyles = '';
@@ -36,7 +38,7 @@ function Answers({ options, onSelectAnswer, answerState }) {
           <li key={answer.id} data-testid="answer-list-item">
             <button
               className={`w-full py-2 px-4 rounded-[24px] shadow-lg font-inter text-lg 
-                ${selectedAnswer === answer.id ? selectedAnswerStyles : 'bg-blue-400 hover:bg-purple-400 disabled:opacity-50'}
+                ${selectedAnswer === answer.id ? selectedAnswerStyles : 'bg-blue-400 hover:bg-purple-400 disabled:opacity-50 disabled:cursor-not-allowed'}
               `}
               onClick={() => handleSelectAnswer(answer)}
               data-testid={`answer-${index}-btn`}
