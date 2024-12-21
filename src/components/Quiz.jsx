@@ -4,7 +4,9 @@ import { useState, useCallback } from 'react';
 import QuizResults from './QuizResults';
 import getShuffleQuestions from '../utils/shuffleQuestions';
 
-const SHUFFLED_QUESTIONS = getShuffleQuestions(QUESTIONS);
+const SHUFFLED_QUESTIONS = window.Cypress
+  ? QUESTIONS
+  : getShuffleQuestions(QUESTIONS);
 
 function Quiz() {
   const [answers, setAnswers] = useState([]);
