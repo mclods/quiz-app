@@ -4,7 +4,7 @@ import classes from './Questions.module.css';
 import QuestionTimer from './QuestionTimer';
 
 export const QUESTION_TIMER_TIMEOUT = 10000;
-export const LOCK_QUESTION_TIMEOUT = 2000;
+export const LOCK_QUESTION_TIMEOUT = 1000;
 export const RESULT_TIMEOUT = 2000;
 
 function Questions({ question, handleSelectAnswer, handleSkipAnswer }) {

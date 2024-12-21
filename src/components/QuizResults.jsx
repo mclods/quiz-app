@@ -1,5 +1,107 @@
-function QuizResults() {
-  return <p>Quiz Finished</p>;
+import trophy from '../assets/quiz-complete.png';
+import classes from './QuizResults.module.css';
+
+function QuizResults({ questions, answers }) {
+  const statsContainerStyles = 'flex flex-col w-24 items-center';
+  const statsPercentStyles = 'text-4xl font-thin';
+  const statsTextStyles = 'text-md uppercase';
+  const correctAnswerStyles = 'text-green-900';
+  const wrongAnswerStyles = 'text-red-900';
+  const skippedAnswerStyles = 'text-white';
+
+  function getAnswerStyles(question, answer) {
+    if (answer === null) {
+      return skippedAnswerStyles;
+    }
+
+    return answer.id === question.correctAnswer
+      ? correctAnswerStyles
+      : wrongAnswerStyles;
+  }
+
+  function getStatsPercent() {
+    let skipped = 0;
+    let correct = 0;
+    let wrong = 0;
+
+    questions.forEach((question, index) => {
+      const answer = answers[index];
+
+      if (answer === null) {
+        skipped++;
+      } else if (answer.id === question.correctAnswer) {
+        correct++;
+      } else {
+        wrong++;
+      }
+    });
+
+    return {
+      skipped: ((skipped / questions.length) * 100).toFixed(2),
+      correct: ((correct / questions.length) * 100).toFixed(2),
+      wrong: ((wrong / questions.length) * 100).toFixed(2),
+    };
+  }
+
+  const { skipped, correct, wrong } = getStatsPercent();
+
+  return (
+    <section
+      className={`flex flex-col gap-y-6 mx-[30vw] my-12 px-[5vw] py-10 rounded-md items-center shadow-[1px_1px_8px_4px_rgba(12,5,32,0.6)] ${classes.quizResults}`}
+    >
+      <div className="flex justify-center items-center w-36 h-36 rounded-full border-2 border-black bg-purple-400 drop-shadow-[0_0_3px_rgb(0,0,0)]">
+        <img
+          src={trophy}
+          alt="A trophy"
+          className="w-20 h-24 drop-shadow-[0_0_3px_rgb(0,0,0)]"
+        />
+      </div>
+
+      <p className="font-inter text-5xl font-bold uppercase text-zinc-800">
+        Quiz Completed!
+      </p>
+      <div className="flex w-full justify-around font-parkinsans text-zinc-800">
+        <div className={statsContainerStyles}>
+          <p className={statsPercentStyles}>{`${skipped}%`}</p>
+          <p className={statsTextStyles}>Skipped</p>
+        </div>
+        <div className={statsContainerStyles}>
+          <p className={statsPercentStyles}>{`${correct}%`}</p>
+          <p className={statsTextStyles}>Answered Correctly</p>
+        </div>
+        <div className={statsContainerStyles}>
+          <p className={statsPercentStyles}>{`${wrong}%`}</p>
+          <p className={statsTextStyles}>Answered Incorrectly</p>
+        </div>
+      </div>
+      <hr className="w-full border-1 border-black" />
+      <section>
+        <ul className="flex flex-col gap-y-6">
+          {questions?.map((question, index) => {
+            const answerStyles = getAnswerStyles(question, answers[index]);
+            const answerText = answers[index]?.text ?? 'Skipped';
+
+            return (
+              <li
+                className="flex flex-col gap-y-2 items-start"
+                key={question.id}
+              >
+                <div className="flex mb-1 self-center justify-center items-center w-8 h-8 rounded-full bg-zinc-800">
+                  <p className="text-white">{index + 1}</p>
+                </div>
+                <p className="font-parkinsans text-md text-zinc-900">
+                  {question.text}
+                </p>
+                <p className={`font-inter text-md font-bold ${answerStyles}`}>
+                  {answerText}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    </section>
+  );
 }
 
 export default QuizResults;

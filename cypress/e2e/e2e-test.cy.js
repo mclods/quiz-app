@@ -1,7 +1,7 @@
 import questions from '../fixtures/questions.json';
 
 const QUESTION_TIMER_TIMEOUT = 10000;
-const LOCK_QUESTION_TIMEOUT = 2000;
+const LOCK_QUESTION_TIMEOUT = 1000;
 const RESULT_TIMEOUT = 2000;
 
 describe('quiz-app e2e tests', () => {
