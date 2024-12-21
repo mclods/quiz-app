@@ -26,7 +26,7 @@ function Quiz() {
   const activeQuestionIndex = answers.length;
 
   if (activeQuestionIndex === SHUFFLED_QUESTIONS.length) {
-    return <QuizResults />;
+    return <QuizResults questions={SHUFFLED_QUESTIONS} answers={answers} />;
   } else {
     activeQuestion = SHUFFLED_QUESTIONS[activeQuestionIndex];
   }
